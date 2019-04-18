@@ -12,8 +12,8 @@ def meta_to_command(file, conf):
 		elif data == "year":
 			command.extend(["-metadata", "year="+str(value)])
 		elif data == "copyright":
-			command.extend(["-metadata", "copyright="+value])	
-	# command.append(conf["meta"]["title"])
+			command.extend(["-metadata", "copyright="+value])
+
 	if conf["format"]["codec"] == "mp3":
 		command.append(conf["meta"]["title"]+".mp3")
 	elif conf["format"]["codec"] == "aac":
