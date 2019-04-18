@@ -3,7 +3,11 @@ import toml
 import subprocess
 
 def meta_to_command(file, conf):
-	command = ["ffmpeg", "-i", file, "-c:a", conf["format"]["codec"], "-b:a", str(conf["format"]["bitrate"])+"k"]
+	if "art" in conf["meta"].keys():
+		command = ["ffmpeg", "-i", file, "-i", conf["meta"]["art"], "-map", "0:0", "-map", "1:0", "-c:a", conf["format"]["codec"], "-b:a", str(conf["format"]["bitrate"])+"k", "-id3v2_version", "3", "-metadata:s:v", "title='Album cover'", "-metadata:s:v", "comment='Cover (front)'"]
+	else:
+		command = ["ffmpeg", "-i", file, "-c:a", conf["format"]["codec"], "-b:a", str(conf["format"]["bitrate"])+"k"]
+	
 	for data, value in conf["meta"].items():
 		if data == "title":
 			command.extend(["-metadata", "title="+value])
