@@ -17,6 +17,16 @@ def meta_to_command(file, conf):
 			command.extend(["-metadata", "year="+str(value)])
 		elif data == "copyright":
 			command.extend(["-metadata", "copyright="+value])
+		elif data == "album":
+			command.extend(["-metadata", "album="+value])
+		elif data == "album_artist":
+			command.extend(["-metadata", "album_artist="+value])
+		elif data == "genre":
+			command.extend(["-metadata", "genre="+value])
+		elif data == "publisher":
+			command.extend(["-metadata", "publisher="+value])
+		elif data == "language":
+			command.extend(["-metadata", "language="+value])
 
 	if conf["format"]["codec"] == "mp3":
 		command.append(conf["meta"]["title"]+".mp3")
