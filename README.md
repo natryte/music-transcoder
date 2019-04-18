@@ -16,15 +16,22 @@ optional arguments:
 ## Config file
 
 ```toml
+# both bitrate and codec tags are required
 [format]
 bitrate=320
 codec="mp3"
 
+# Only the title meta tag is required
 [meta]
 title="test"
 artist="test"
 year=2019
-copyright="2019 test"
+copyright="2019 test" # automatically adds the © symbol
+art="test.png" # must be a path to a file!
+album_artist="test"
+genre="test"
+publisher="testing co."
+language="eng"
 ```
 
 ## License
